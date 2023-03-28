@@ -1,23 +1,30 @@
 import Paper from "@mui/material/Paper";
-import {FC, useState} from "react";
+import {FC} from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "../../../firebase";
 
-export const ListOfGoods: FC = () => {
-  let goodsFromLS = JSON.parse(localStorage.getItem('goods') || JSON.stringify([]))
-  const [goods, setGoods] = useState<string[]>(goodsFromLS)
-  console.log(goods)
-  const list = ['1', '2', '3'].map(el => {
-    const clickHandler = () => {
-      setGoods([...goods, el])
-      localStorage.setItem('goods', JSON.stringify([...goods, el]))
+type Props = {
+  saveGoods: (item: string) => void
+}
+
+export const ListOfGoods: FC<Props> = ({saveGoods}) => {
+  const list = ['1', '2', '3']
+    .map(el => <Paper key={el} elevation={3}>
+      <Button onClick={() => saveGoods(el)}> save {el} </Button>
+    </Paper>)
+
+  const clickHandler = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "boots"));
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+      });
+    } catch (e) {
+      console.log(e)
     }
-    return (
-      <Paper key={el} elevation={3}>
-        <Button onClick={clickHandler}> save {el} </Button>
-      </Paper>
-    )
-  })
+  }
 
   return (
     <Box
@@ -32,6 +39,7 @@ export const ListOfGoods: FC = () => {
       }}
     >
       {list}
+      <button onClick={clickHandler}>+++</button>
     </Box>
   )
 }
