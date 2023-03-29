@@ -5,7 +5,6 @@ import {store} from './app/store';
 import App from './app/App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import './firebase'
 import {HashRouter} from "react-router-dom";
 
 const container = document.getElementById('root')!;

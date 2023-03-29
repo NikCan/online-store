@@ -12,31 +12,28 @@ import WorkIcon from '@mui/icons-material/WorkOutline';
 import Chip from '@mui/material/Chip';
 import {useNavigate} from "react-router-dom";
 import {PATH} from "common/utils/path";
+import {useCart} from "hooks/useCart";
 
-type Props = {
-  goodsFromLS: string[]
-}
-
-export const Header: FC<Props> = ({goodsFromLS}) => {
+export const Header: FC = () => {
   const navigate = useNavigate()
-  const amount = goodsFromLS.length
-  const sum = '$ 100.00'
+  const {quantity, sum} = useCart()
+
   return (
     <Box sx={{flexGrow: 1}}>
       <ThemeProvider theme={darkTheme}>
         <AppBar sx={{height: '70px'}} position="static">
           <Toolbar>
-            <img onClick={()=>navigate(PATH.HOME)} style={{height: '70%', cursor: 'pointer'}} src={logo} alt="logo"/>
+            <img onClick={() => navigate(PATH.HOME)} style={{height: '70%', cursor: 'pointer'}} src={logo} alt="logo"/>
             <Typography variant="h6" component="div" sx={{flexGrow: 1, marginLeft: '20px'}}>
               Motorcycle equipment store
             </Typography>
-            <Chip label={sum} variant="outlined" />
+            <Chip label={'$ ' + sum} variant="outlined"/>
             <IconButton
               size="large"
               color="inherit"
-              onClick={()=>navigate(PATH.CART)}
+              onClick={() => navigate(PATH.CART)}
             >
-              <Badge badgeContent={amount} color="error">
+              <Badge badgeContent={quantity} color="error">
                 <WorkIcon/>
               </Badge>
             </IconButton>

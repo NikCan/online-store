@@ -4,16 +4,16 @@ import {Header} from "../common/components/header/Header";
 import {Pages} from "../common/components/pages/Pages";
 import {NotificationBar} from "../common/components/notification-bar/NotificationBar";
 import {InitialLoader} from "../common/components/initial-loader/InitialLoader";
-import {useLocalStorage} from "../hooks/useLocalStorage";
+import {useCart} from "../hooks/useCart";
 
 function App() {
-  const {goodsFromLS, saveGoods} = useLocalStorage()
+  const {goodsFromLS, saveGoods} = useCart()
 
   if (false) return <InitialLoader/>
   return (
     <div>
-      <Header goodsFromLS={goodsFromLS}/>
-      <Pages saveGoods={saveGoods}/>
+      <Header/>
+      <Pages goodsFromLS={goodsFromLS} saveGoods={saveGoods}/>
       <NotificationBar/>
     </div>
   )

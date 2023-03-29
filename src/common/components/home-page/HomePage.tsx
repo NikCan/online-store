@@ -1,10 +1,10 @@
 import {FC} from "react"
 import {Category} from "../category/Category";
 import Box from "@mui/material/Box";
-import {productTypes} from "../../constants/product-types";
+import {productCategories} from "../../constants/product-categories";
 
 export const HomePage: FC = () => {
-  const list = productTypes.map(el => <Category key={el} title={el}/>)
+  const list = productCategories.map(el => <Category key={el} title={el}/>)
 
   return (
     <Box

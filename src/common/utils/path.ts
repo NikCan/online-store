@@ -1,5 +1,5 @@
 export const PATH = {
   CART: '/cart',
   HOME: '/home',
-  LIST: '/list',
+  LIST: '/:category',
 } as const

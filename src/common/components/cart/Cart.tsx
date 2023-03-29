@@ -1,9 +1,19 @@
 import {FC} from "react";
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import {OrderForm} from "../order-form/OrderForm";
+import {GoodsCard} from "../goods-card/GoodsCard";
+import {GoodType} from "app/appSlice";
+import {useCart} from "hooks/useCart";
 
-export const Cart: FC = () => {
+type Props = {
+  goods: GoodType[]
+}
+
+export const Cart: FC<Props> = ({goods}) => {
+  const {sum} = useCart()
+  const list = goods
+    .map(el => <GoodsCard key={el.id} cartMode={true} good={el}/>)
+
   return (
     <div style={{
       display: 'flex',
@@ -19,13 +29,12 @@ export const Cart: FC = () => {
           '& > :not(style)': {
             m: 1,
             width: 350,
-            height: 100,
+            height: 70,
           },
         }}
       >
-        <Paper/>
-        <Paper/>
-        <Paper/>
+        {list}
+        <div>total: {sum} $</div>
       </Box>
       <OrderForm/>
     </div>
