@@ -1,5 +1,5 @@
 import React from 'react'
-import error404 from '../../../assets/images/error404.png'
+import error404 from 'assets/images/error404.png'
 
 export const Error404 = () => {
   return (

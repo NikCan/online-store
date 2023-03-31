@@ -1,22 +1,18 @@
 import React from 'react';
 import './App.css';
-import {Header} from "../common/components/header/Header";
+import {Header} from "../features/header/Header";
 import {Pages} from "../common/components/pages/Pages";
-import {NotificationBar} from "../common/components/notification-bar/NotificationBar";
-import {InitialLoader} from "../common/components/initial-loader/InitialLoader";
-import {useCart} from "../hooks/useCart";
+import {useCart} from "../features/cart/hooks/useCart";
 
 function App() {
-  const {goodsFromLS, saveGoods} = useCart()
+    const {goodsFromLS, saveGoods, deleteGoods} = useCart()
 
-  if (false) return <InitialLoader/>
-  return (
-    <div>
-      <Header/>
-      <Pages goodsFromLS={goodsFromLS} saveGoods={saveGoods}/>
-      <NotificationBar/>
-    </div>
-  )
+    return (
+        <div>
+            <Header/>
+            <Pages goodsFromLS={goodsFromLS} saveGoods={saveGoods} deleteGoods={deleteGoods}/>
+        </div>
+    )
 }
 
 export default App;

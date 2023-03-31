@@ -5,14 +5,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import {ThemeProvider} from '@mui/material/styles'
-import {darkTheme} from "common/utils/themes";
+import {darkTheme} from "common/utils/constants/themes";
 import logo from 'assets/images/logo.png'
 import Badge from '@mui/material/Badge';
 import WorkIcon from '@mui/icons-material/WorkOutline';
 import Chip from '@mui/material/Chip';
 import {useNavigate} from "react-router-dom";
-import {PATH} from "common/utils/path";
-import {useCart} from "hooks/useCart";
+import {PATH} from "common/utils/constants/path";
+import {useCart} from "features/cart/hooks/useCart";
 
 export const Header: FC = () => {
   const navigate = useNavigate()
