@@ -6,7 +6,7 @@ import {useCart} from 'features/cart/hooks/useCart'
 import {FieldValues} from 'react-hook-form'
 import {useNavigate} from 'react-router-dom'
 import {PATH} from 'common/utils/constants/path'
-import {sendOrder} from 'fire/API'
+import {sendOrder} from 'fire-base/API'
 import {CartBox, CartContainer} from 'features/cart/style/cart-styles'
 
 type Props = {

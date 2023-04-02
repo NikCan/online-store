@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import {ProductType} from '../goods/goodsSlice'
-import {getCategories} from 'fire/API'
+import {getCategories} from 'fire-base/API'
 
 export const fetchCategories = createAsyncThunk<CategoryType[], undefined>(
   'categories/fetchCategories',

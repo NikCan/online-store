@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
-import {getGoods} from 'fire/API'
+import {getGoods} from 'fire-base/API'
 
 export const fetchGoods = createAsyncThunk<{ goods: Array<GoodType>, type: string }, string>(
   'goods/fetchGoods',

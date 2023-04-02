@@ -1,5 +1,6 @@
 {
   "name": "online-store",
+  "homepage": "https://nikcan.github.io/online-store",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,7 +17,6 @@
     "@types/react": "^18.0.6",
     "@types/react-dom": "^18.0.2",
     "firebase": "^9.18.0",
-    "firebase-admin": "^11.5.0",
     "imask": "^6.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -32,7 +32,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
