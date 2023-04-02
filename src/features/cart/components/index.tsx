@@ -1,5 +1,4 @@
 import {FC} from 'react'
-import Box from '@mui/material/Box'
 import {OrderForm} from './order-form/OrderForm'
 import {GoodsCard} from 'common/components'
 import {GoodType} from 'features/goods/goodsSlice'
@@ -8,6 +7,7 @@ import {FieldValues} from 'react-hook-form'
 import {useNavigate} from 'react-router-dom'
 import {PATH} from 'common/utils/constants/path'
 import {sendOrder} from 'fire/API'
+import {CartBox, CartContainer} from 'features/cart/style/cart-styles'
 
 type Props = {
   goods: GoodType[]
@@ -36,31 +36,12 @@ export const Cart: FC<Props> = ({goods, saveGoods, deleteGoods, clearCart}) => {
   }
 
   return (
-    <div style={{
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      paddingTop: '20px',
-      minHeight: '100vh'
-    }}>
-      <Box
-        style={{width: '53%', minWidth: '350px'}}
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          flexDirection: 'column',
-          '& > :not(style)': {
-            minWidth: 340,
-            height: 70,
-            m: 1,
-            pr: 1,
-          },
-        }}
-      >
+    <CartContainer>
+      <CartBox>
         {list}
         <div>total: {sum} $</div>
-      </Box>
+      </CartBox>
       <OrderForm onSubmit={onSubmit}/>
-    </div>
+    </CartContainer>
   )
 }

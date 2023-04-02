@@ -1,7 +1,7 @@
 import {FC} from 'react'
 import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
 import {FieldValues, useForm} from 'react-hook-form'
+import {Form, PrimaryButton} from 'features/cart/style/cart-styles'
 
 type Props = {
   onSubmit: (data: FieldValues) => void
@@ -17,15 +17,7 @@ export const OrderForm: FC<Props> = ({onSubmit}) => {
   isSubmitSuccessful && reset()
 
   return (
-    <form style={{
-      display: 'flex',
-      flexWrap: 'wrap',
-      flexDirection: 'column',
-      justifyContent: 'space-around',
-      height: '400px',
-      width: '350px'
-    }}
-          onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <TextField error={!!errors?.firstName?.message}
                  helperText={errors?.firstName?.message as string}
                  label="First name"
@@ -71,8 +63,7 @@ export const OrderForm: FC<Props> = ({onSubmit}) => {
                      message: 'maximum field length 15 characters'
                    }
                  })} />
-      <Button style={{padding: '8px', height: '56px',}} color="primary" variant="contained"
-              type={'submit'} disabled={!isValid}>ORDER</Button>
-    </form>
+      <PrimaryButton disabled={!isValid}>ORDER</PrimaryButton>
+    </Form>
   )
 }

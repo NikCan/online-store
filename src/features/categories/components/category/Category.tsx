@@ -1,7 +1,8 @@
 import {FC} from 'react'
-import Paper from '@mui/material/Paper'
 import {useNavigate} from 'react-router-dom'
 import {CategoryType} from '../../categoriesSlice'
+import {CategoryPaper, Cover, CoverContainer, Title} from 'features/categories/style/categories-styles'
+import {PATH} from 'common/utils/constants/path'
 
 type Props = {
   category: CategoryType
@@ -9,13 +10,12 @@ type Props = {
 
 export const Category: FC<Props> = ({category}) => {
   const navigate = useNavigate()
-  const clickHandler = () => navigate('/' + category.title)
+  const clickHandler = () => navigate(PATH.HOME + category.title)
 
   return (
-    <Paper style={{cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center'}}
-           onClick={clickHandler} elevation={3}>
-      <div style={{fontWeight: 'bold', textTransform: 'uppercase'}}>{category.title}</div>
-      <div style={{height: '90%'}}><img style={{height: '100%'}} src={category.cover} alt="cover"/></div>
-    </Paper>
+    <CategoryPaper onClick={clickHandler}>
+      <Title>{category.title}</Title>
+      <CoverContainer><Cover src={category.cover} alt="cover"/></CoverContainer>
+    </CategoryPaper>
   )
 }

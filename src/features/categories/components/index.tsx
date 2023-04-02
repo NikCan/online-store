@@ -1,8 +1,8 @@
 import {FC, useEffect} from 'react'
 import {Category} from './category/Category'
-import Box from '@mui/material/Box'
 import {useAppDispatch, useAppSelector} from 'common/hooks'
 import {fetchCategories} from '../categoriesSlice'
+import {CategoriesBox} from 'features/categories/style/categories-styles'
 
 export const Categories: FC = () => {
   const dispatch = useAppDispatch()
@@ -18,19 +18,8 @@ export const Categories: FC = () => {
   }, [dispatch, categories.length])
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        minHeight: '100vh',
-        '& > :not(style)': {
-          m: 2,
-          width: 350,
-          height: 400,
-        },
-      }}
-    >
+    <CategoriesBox>
       {list}
-    </Box>
+    </CategoriesBox>
   )
 }
