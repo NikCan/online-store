@@ -32,11 +32,16 @@ export const useCart = () => {
         }
     }
 
+    const clearCart = () => {
+        setGoods([])
+        localStorage.clear()
+    }
+
     let quantity = 0
     goodsFromLS.forEach(el => quantity += (el.quantity ? el.quantity : 1))
 
     let sum = 0
     goodsFromLS.forEach(el => sum += el.price * (el.quantity ? el.quantity : 1))
 
-    return {goodsFromLS, saveGoods, deleteGoods, quantity, sum}
+    return {goodsFromLS, saveGoods, deleteGoods, clearCart, quantity, sum}
 }

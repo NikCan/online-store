@@ -6,7 +6,7 @@ import {FC} from "react";
 
 export const Loader: FC = () => {
     return (
-        <Box sx={{display: 'flex', justifyContent: 'center'}}>
+        <Box sx={{display: 'flex', justifyContent: 'center', minHeight: '100vh'}}>
                 <Stack sx={{width: '100%', color: 'grey.500'}} spacing={2}>
                     <LinearProgress color="inherit"/>
                 </Stack>

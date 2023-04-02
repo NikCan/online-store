@@ -29,6 +29,7 @@ export const Goods: FC<Props> = ({saveGoods, deleteGoods}) => {
             sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
+                minHeight: '100vh',
                 '& > :not(style)': {
                     m: 2,
                     width: 350,

@@ -12,10 +12,11 @@ import {useAppSelector} from "../../../hooks/useAppSelector";
 type Props = {
     saveGoods: (good: GoodType) => void
     deleteGoods: (good: GoodType) => void
+    clearCart: () => void
     goodsFromLS: GoodType[]
 }
 
-export const Pages: FC<Props> = ({saveGoods, goodsFromLS, deleteGoods}) => {
+export const Pages: FC<Props> = ({saveGoods, goodsFromLS, deleteGoods, clearCart}) => {
     const status = useAppSelector(state => state.app.status)
 
     if (status === 'loading') return <Loader/>
@@ -25,7 +26,7 @@ export const Pages: FC<Props> = ({saveGoods, goodsFromLS, deleteGoods}) => {
             <Route path={PATH.HOME} element={<Categories/>}/>
             <Route path={PATH.LIST} element={<Goods saveGoods={saveGoods} deleteGoods={deleteGoods}/>}/>
             <Route path={PATH.CART}
-                   element={<Cart saveGoods={saveGoods} deleteGoods={deleteGoods} goods={goodsFromLS}/>}/>
+                   element={<Cart saveGoods={saveGoods} deleteGoods={deleteGoods} clearCart={clearCart} goods={goodsFromLS}/>}/>
             <Route path={'*'} element={<Error404/>}/>
         </Routes>
     )

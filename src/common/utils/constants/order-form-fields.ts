@@ -1,1 +1,0 @@
-export const orderFormFields = ['Name', 'Surname', 'Address', 'Phone']

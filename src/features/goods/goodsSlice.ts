@@ -3,7 +3,7 @@ import {db} from "../../firebase/firebase";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const fetchGoods = createAsyncThunk<{ goods: Array<GoodType>, type: string }, string>(
-    'app/fetchGoods',
+    'goods/fetchGoods',
     async (type, thunkAPI) => {
         try {
             const querySnapshot = await getDocs(collection(db, type))
