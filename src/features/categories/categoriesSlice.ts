@@ -1,19 +1,12 @@
-import {collection, getDocs} from "firebase/firestore";
-import {db} from "../../firebase/firebase";
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-
-import {ProductType} from "../goods/goodsSlice";
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {ProductType} from '../goods/goodsSlice'
+import {getCategories} from 'fire/API'
 
 export const fetchCategories = createAsyncThunk<CategoryType[], undefined>(
   'categories/fetchCategories',
   async (param, thunkAPI) => {
     try {
-      const querySnapshot = await getDocs(collection(db, 'categories'))
-      let categories = [] as CategoryType[]
-      querySnapshot.forEach((doc) => {
-        categories.push({id: doc.id, ...doc.data()} as CategoryType)
-      })
-      return categories
+      return getCategories()
     } catch (e) {
       return thunkAPI.rejectWithValue(e)
     }
@@ -24,9 +17,9 @@ const slice = createSlice({
   initialState: [] as CategoryType[],
   reducers: {},
   extraReducers: builder => builder
-  .addCase(fetchCategories.fulfilled, (state, action) => {
-    return action.payload
-  })
+    .addCase(fetchCategories.fulfilled, (state, action) => {
+      return action.payload
+    })
 })
 
 export const {reducer: categoriesReducer, actions: categoriesActions} = slice

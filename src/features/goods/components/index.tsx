@@ -1,10 +1,9 @@
 import {FC, useEffect} from "react";
 import Box from "@mui/material/Box";
 import {fetchGoods, GoodType, ProductType} from "features/goods/goodsSlice";
-import {useAppDispatch} from "../../../hooks/useAppDispatch";
-import {GoodsCard} from "../../../common/components/goods-card/GoodsCard";
+import {useAppDispatch, useAppSelector} from "common/hooks";
+import {GoodsCard} from "common/components";
 import {useParams} from "react-router-dom";
-import {useAppSelector} from "../../../hooks/useAppSelector";
 
 type Props = {
     saveGoods: (good: GoodType) => void

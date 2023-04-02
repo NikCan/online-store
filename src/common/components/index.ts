@@ -1,0 +1,5 @@
+export  * from './footer/Footer'
+export  * from './pages/Pages'
+export  * from './error404/Error404'
+export  * from './loader/Loader'
+export  * from './goods-card/GoodsCard'

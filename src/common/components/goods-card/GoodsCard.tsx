@@ -22,9 +22,8 @@ export const GoodsCard: FC<Props> = ({cartMode = false, good, saveGoods, deleteG
             alignItems: 'center',
         }}>
             <div style={{height: '80%'}}><img style={{height: '100%'}} src={good.image} alt="img"/></div>
-            <div>{good.title}</div>
-            <div>$ {good.price}</div>
-            {cartMode && <div>x{good.quantity || 1}</div>}
+            <div style={{fontWeight: 'bold', textTransform: 'uppercase'}}>{good.title}</div>
+            <div style={{display: 'flex', flexWrap: 'wrap'}}>$ {good.price}{cartMode && <div>x{good.quantity || 1}</div>}</div>
             <ButtonGroup size='small'>
                 <Button aria-label="reduce" onClick={() => deleteGoods(good)}>
                     <RemoveIcon fontSize="small"/>
